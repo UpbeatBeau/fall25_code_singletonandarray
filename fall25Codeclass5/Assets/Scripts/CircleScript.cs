@@ -10,6 +10,8 @@ public class CircleScript : MonoBehaviour
 
     public InputActionReference move;
 
+    public InputActionReference interact;
+
     public Rigidbody2D rb;
 
     public float movespeed;
@@ -39,6 +41,12 @@ public class CircleScript : MonoBehaviour
     void Update()
     {
         movedirection = move.action.ReadValue<Vector2>();
+
+        if (interact.action.WasPressedThisFrame())
+        {
+            GameManager.instance.score++;
+        }
+        
     }
 
     private void FixedUpdate()
